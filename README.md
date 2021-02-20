@@ -1,2 +1,2 @@
 # Data-Structs-Team
-Data structures class repository.
+Data structures class team for collaboration
