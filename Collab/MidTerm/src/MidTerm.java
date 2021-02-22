@@ -30,7 +30,6 @@ public class MidTerm {
 		// int[] userArr = testArr;
 		// int arrayInput = testArr.length;
 
-	
 
 		/**
 		 * Testing Purposes...
@@ -41,58 +40,98 @@ public class MidTerm {
 		// 	System.out.printf("%d ", userArr[i]);
 		// }
 
-		// User Validation...
-		System.out.printf("\n\n1 - Quick Sort\n" 
-		+ "2 - Merge Sort\n" 
-		+ "3 - Inversion Count\n" 
-		+ "4 - Shell Sort\n" 
-		+ "5 - Exit...\n" );
+		int[] insertionArr = new int[userArr.length]; // Specifically used for the Insertion Function
+		int[] inversionArr = new int[userArr.length]; // Specifically used for the Inversion Function
+		int[] shellArr = new int[userArr.length]; // ... Hold my damn beer im going in.
+		int[] mergeArr = new int[userArr.length]; // ... I seriously gotta get a life....
+		int[] hardCopyArr = new int[userArr.length]; // ... Hold it again...
 
-		System.out.printf("Please choose what sorting algorithm you want: ");
-		int intInput = userIn.nextInt();
-		
-
-		if (intInput == 1) // Quick Sort
+		for(int i = 0; i < userArr.length; i++) // Deep copy arrays
 		{
-			Integer convertedArr[] = new Integer[arrayInput];
-			for(int i = 0; i < userArr.length; i++)
+			insertionArr[i] = userArr[i];
+			inversionArr[i] = userArr[i];
+			shellArr[i] = userArr[i];
+			mergeArr[i] = userArr[i];
+			hardCopyArr[i] = userArr[i];
+		}
+
+
+		boolean valid = true;
+		while (valid) 
+		{
+
+			// User Validation...
+			System.out.printf("\n\n1 - Quick Sort\n" 
+			+ "2 - Merge Sort\n" 
+			+ "3 - Insertion Sort\n" 
+			+ "4 - Shell Sort\n"
+			+ "5 - Inversion Count\n"
+			+ "6 - Exit...\n" );
+
+			System.out.printf("Please choose what sorting algorithm you want: ");
+			int intInput = userIn.nextInt();
+			
+			if (intInput == 1) // Quick Sort
 			{
-				convertedArr[i] = Integer.valueOf(userArr[i]);
+				Integer convertedArr[] = new Integer[arrayInput];
+				for(int i = 0; i < userArr.length; i++)
+				{
+					convertedArr[i] = Integer.valueOf(userArr[i]);
+				}
+
+				System.out.println("\nQuick Sort:");
+				quicksort(convertedArr);
+
+			}
+			else if (intInput == 2) // Merge Sort
+			{
+				for(int i = 0; i < mergeArr.length; i++) // Refreshes Array...
+				{
+					mergeArr[i] = hardCopyArr[i];		
+				}		
+				System.out.println("\nMerge Sort:");
+				mergeSort(mergeArr);
+
+			}
+			else if (intInput == 3) // Insertion Sort
+			{
+				for(int i = 0; i < insertionArr.length; i++) // Refreshes Array...
+				{
+					insertionArr[i] = hardCopyArr[i];		
+				}		
+				System.out.println("\nInsertion Sort:");
+				insertionSort(insertionArr, insertionArr.length); // 2nd Parameter is the length of the array.
+
+			}
+			else if (intInput == 4) // Shell Sort
+			{
+				for(int i = 0; i < shellArr.length; i++) // Refreshes Array...
+				{
+					shellArr[i] = hardCopyArr[i];		
+				}		
+				System.out.println("\nShell Sort");
+				shellsort(shellArr);
+				
+			}
+			else if (intInput == 5)  // Inversion Count
+			{
+				System.out.println("\nInversion Count");
+				System.out.printf("Inversion Number %d\n", getInvCount(inversionArr));
+				
+			}
+			else if (intInput == 6) // Closing
+			{
+				System.out.println("Have a good day!  (•◡•) /");
+				valid = false;
+			}
+			else // Closing loose ends...
+			{
+				System.out.println("Please select a different option..");
 			}
 
-			System.out.println("\nQuick Sort:");
-			quicksort(convertedArr);
-			userIn.close(); // Closing Scanner
-
-		}
-		else if (intInput == 2) // Merge Sort
-		{
-			System.out.println("\nMerge Sort:");
-			mergeSort(userArr);
-
-		}
-		else if (intInput == 3) // Inversion Count
-		{
-			System.out.println("\nInversion Count");
-			System.out.printf("Inversion Number %d\n", getInvCount(userArr));
-
-		}
-		else if (intInput == 4) // Shell Sort
-		{
-			System.out.println("\nShell Sort");
-			shellsort(userArr);
-			
-		}
-		else if (intInput == 5) // Closing
-		{
-			System.out.println("Have a good day!  (•◡•) /");
-			System.exit(0);
-		}
-		else // Closing loose ends...
-		{
-			System.out.println("Please select a different option..");
 		}
 		userIn.close(); // Closing Scanner
+		System.exit(0);
 	}
 
 
