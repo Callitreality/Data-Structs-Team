@@ -4,7 +4,6 @@
 // import java.util.Stack;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner6;
 
 public class MidTerm {
 
