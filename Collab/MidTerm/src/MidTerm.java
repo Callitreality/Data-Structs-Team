@@ -4,7 +4,6 @@
 // import java.util.Stack;
 import java.util.Scanner;
 
-
 public class MidTerm {
 
 	public static void main(String[] args) {
@@ -21,7 +20,6 @@ public class MidTerm {
 		{
 			userArr[i] = userIn.nextInt();
 		}
-		userIn.close(); // Closing Scanner
 
 		/**
 		 * Testing Purposes...
@@ -33,13 +31,15 @@ public class MidTerm {
 		// }
 
 		// User Validation...
-		System.out.println("Please choose what sorting algorithm you want: ");
-		System.out.printf("1 - Quick Sort\n" + "2 - Merge Sort\n" + "3 - Inversion Count\n" + "4 - Shell Sort\n" + "5 - Exit..." );
+		System.out.printf("\n\n1 - Quick Sort\n" 
+		+ "2 - Merge Sort\n" 
+		+ "3 - Inversion Count\n" 
+		+ "4 - Shell Sort\n" 
+		+ "5 - Exit...\n" );
 
-		// New scanner for selecting choices.
-		Scanner userInput = new Scanner(System.in);
-		int intInput = userInput.nextInt();
-		userInput.close(); // Closing Scanner
+		System.out.printf("Please choose what sorting algorithm you want: ");
+		int intInput = userIn.nextInt();
+		userIn.close(); // Closing Scanner
 
 		if (intInput == 1) // Quick Sort
 		{
@@ -53,10 +53,12 @@ public class MidTerm {
 		}
 		else if (intInput == 3) // Inversion Count
 		{
+			System.out.println("\nInversion Count");
 
 		}
 		else if (intInput == 4) // Shell Sort
 		{
+			System.out.println("\nShell Sort");
 
 		}
 		else if (intInput == 5) // Closing
@@ -64,12 +66,9 @@ public class MidTerm {
 			System.out.println("Have a good day!  (•◡•) /");
 			System.exit(0);
 		}
-		else 
+		else // Closing loose ends...
 		{
 			System.out.println("Please select a different option..");
 		}
-
-
 	}
-
 }
