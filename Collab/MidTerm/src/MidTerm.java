@@ -3,7 +3,10 @@
 // import java.util.Queue;
 // import java.util.Stack;
 // import java.util.Objects;
+import java.util.Arrays;
 import java.util.Scanner;
+
+import jdk.internal.agent.resources.agent;
 
 public class MidTerm {
 
@@ -109,9 +112,22 @@ public class MidTerm {
 				{
 					shellArr[i] = hardCopyArr[i];		
 				}		
-				System.out.println("\nShell Sort");
-				shellsort(shellArr);
-				
+				System.out.println("\nShell Sort\n");
+				System.out.print("Enter number of shellsort passes: ");
+				int passes = userIn.nextInt();
+				System.out.println();
+
+				// Gaps Array
+				int[] gaps = new int[passes];
+				System.out.println("Enter increments in decending order: ");
+				for (int i = 0; i < passes; i++) 
+				{
+					gaps[i] = userIn.nextInt();
+				}
+
+				shellsort(Arrays.stream(shellArr).boxed().toArray(Integer[]::new), gaps);
+
+				pressAnyKeyToContinue();
 			}
 			else if (intInput == 5)  // Inversion Count
 			{
@@ -198,8 +214,9 @@ public class MidTerm {
 		       System.out.printf("  With %d swaps\n", swaps);
 		   } 
 	}
+	//Depreciated shellsort algorithm
 
-	public static int shellsort(int arr[]) 
+	/*public static int shellsort(int arr[])
 	{ 
 		int n = arr.length; 
 
@@ -242,6 +259,49 @@ public class MidTerm {
 		} 
 		return 0; 
 	}
+
+	/**
+     * Shellsort, using Shell's (poor) increments.
+     * @param a an array of Comparable items.
+     */
+	
+	 public static <AnyType extends Comparable<? super AnyType>>void shellsort( AnyType [ ] a, int [ ] gaps)
+    {
+        int j = -1;
+		// prints intial array (on one line) for comparison
+		System.out.printf("Inital Array: {");
+		for (AnyType anyType : a) {
+			System.out.printf("%3s, ", anyType.toString());
+		}
+		System.out.printf("\b\b}\n");
+
+		//gap-sorts from gap-size gaps[0] -> gaps[n]
+        for( int gap : gaps){
+            int swaps = 0;
+			for( int i = gap; i < a.length; i++ ){
+				// add a[i] to the elements that have been gap 
+				// sorted save a[i] in temp and make a hole at 
+				// position i 
+                AnyType tmp = a[ i ];
+				// shift earlier gap-sorted elements up until 
+				// the correct location for a[i] is found 
+                for( j = i; j >= gap && tmp.compareTo( a[ j - gap ] ) < 0; j -= gap ){
+					swaps++;
+					a[ j ] = a[ j - gap ];
+				}
+
+				// put temp (the original a[i]) in its correct 
+				// location 
+                a[ j ] = tmp;
+            }	
+		//prints working array and swaps committed
+		System.out.printf("After %d sort:  ", gap);
+		for(int i = 0; i < a.length;i++)
+			System.out.printf("%3s, ",a[i].toString());
+		System.out.printf("\b\b");
+		System.out.printf("    with %d swaps\n", swaps);
+		}
+    }
 
 
 
@@ -440,6 +500,17 @@ public class MidTerm {
 		a[ index1 ] = a[ index2 ];
 		a[ index2 ] = tmp;
 	}
+
+	private static void pressAnyKeyToContinue()
+ 	{ 
+        System.out.println("\nPress Enter key to continue...");
+        try
+        {
+            System.in.read();
+        }  
+        catch(Exception e)
+        {}  
+ }
 
 
 }
