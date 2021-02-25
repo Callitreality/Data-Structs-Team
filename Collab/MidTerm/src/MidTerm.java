@@ -6,8 +6,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-import jdk.internal.agent.resources.agent;
-
 public class MidTerm {
 
 	// Global Variables
