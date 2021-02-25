@@ -15,21 +15,21 @@ public class MidTerm {
 
 		System.out.print("Enter Size of the Array: ");
 		Scanner userIn = new Scanner(System.in);
-		int arrayInput = userIn.nextInt();
-		System.out.println();
+		// int arrayInput = userIn.nextInt();
+		// System.out.println();
 
-		// User Array
-		int[] userArr = new int[arrayInput];
-		System.out.println("Enter array: ");
-		for (int i = 0; i < arrayInput; i++) 
-		{
-			userArr[i] = userIn.nextInt();
-		}
+		// // User Array
+		// int[] userArr = new int[arrayInput];
+		// System.out.println("Enter array: ");
+		// for (int i = 0; i < arrayInput; i++) 
+		// {
+		// 	userArr[i] = userIn.nextInt();
+		// }
 
 		// Testing algorithms
-		// int[] testArr = {7, 12, 9, 2, 17, 3, 4, 18, 13, 1, 5, 6};
-		// int[] userArr = testArr;
-		// int arrayInput = testArr.length;
+		 int[] testArr = {7, 12, 9, 2, 17, 3, 4, 18, 13, 1, 5, 6};
+		 int[] userArr = testArr;
+		 int arrayInput = testArr.length;
 
 
 		/**
